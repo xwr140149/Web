@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+        }
+
+        #box {
+            margin-top: 2000px;
+        }
+    </style>
+    
+</head>
+<body>
+<div id="box"></div>
+<img src="images/bpic_1.gif" id="ts">
+<script>
+    //获取图片
+    var ts = document.getElementById("ts");
+    //当鼠标在页面中移动的时候，让图片跟随鼠标移动
+    document.onmousemove = function (e) {
+        var e = e || window.event;
+        //获取鼠标的位置
+        var x = e.clientX;
+        var y = e.clientY;
+
+        //获取页面被卷曲的高度
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        var scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
+
+        ts.style.left = x + scrollLeft + "px";
+        ts.style.top = y + scrollTop + "px";
+    };
+
+
+</script>
+</body>
+</html>

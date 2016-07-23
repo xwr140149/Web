@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		.container{
+			width: 250px;
+			height: 100px;
+			padding:10px;
+			margin:100px auto;
+			text-align: center;
+			border: 1px solid #000;
+		}
+
+		.container input{
+			color:gray;
+		}
+
+		.container span{
+			border: 1px solid #000;
+			width: 240px;
+			display: none;
+		}
+
+		.container span.show{
+			display: block;
+		}
+
+		.container span.right{
+			display: block;
+			border: 2px solid #6cff52;
+			background-color: #4ea32e;
+		}
+
+		.container span.wrong{
+			display: block;
+			border: 2px solid #f32ba5;
+			background-color: #ffc1b4;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	用户名: <input id="ipt" type="text" value="请输入用户名">
+	<br>
+	<br>
+	<span id="span">请输入admin</span>
+</div>
+
+	<script>
+		var text=document.getElementById("ipt");
+		var sp=document.getElementById("span");
+
+		text.onfocus=function(){
+			if(text.value=="请输入用户名"){
+				text.value="";
+				sp.className="show";
+			}
+		};
+
+		text.onblur=function(){
+			if(text.value==""){
+				text.value="请输入用户名";
+				sp.innerHTML="请输入admin";
+				sp.className="";
+			}else if(text.value=="admin"){
+				sp.className="right";
+				sp.innerHTML="验证成功";
+			}else{
+				sp.className="wrong";
+				sp.innerHTML="验证失败";
+			}
+		};
+	</script>
+	
+</body>
+</html>

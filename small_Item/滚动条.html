@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 300px;
+            height: 500px;
+            border: 1px solid red;
+            margin: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            padding: 5px 18px 5px 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+
+        .scroll {
+            width: 18px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #eee;
+        }
+
+        .bar {
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: red;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="content" id="content">
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容 我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，111111111111111
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，111111111111111
+    </div>
+    <div id="scroll" class="scroll">
+        <div class="bar" id="bar"></div>
+    </div>
+</div>
+<script>
+    //获取页面元素
+    var box = document.getElementById("box");
+    var content = box.children[0];
+    var scroll = box.children[1];
+    var bar = scroll.children[0];
+
+    //首先要根据box和content的大小比例计算出bar的高
+    var bili = box.offsetHeight / content.offsetHeight;
+    //用scroll的高乘以比例
+    bar.style.height = scroll.offsetHeight * bili + "px";
+
+    //点住滚动条bar，计算鼠标在bar内的位置
+    bar.onmousedown = function (e) {
+        var y = e.clientY - bar.offsetTop - box.offsetTop;
+
+        //开始拖动
+        document.onmousemove = function (e) {
+            //获取鼠标的新位置
+            var currentY = e.clientY - y - box.offsetTop;
+
+            //需要跟currentY设定上下限
+            if (currentY < 0) {
+                currentY = 0;
+            }
+            if (currentY > scroll.offsetHeight - bar.offsetHeight) {
+                currentY = scroll.offsetHeight - bar.offsetHeight;
+            }
+            //设置为bar的top值
+            bar.style.top = currentY + "px";
+
+            //取消滚动时的文本选中
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+
+            //让文本移动，比例换算。。
+            content.style.top = -currentY / bili + "px";
+
+            //小/大 = 比例；
+            //小/比例 = 大；
+        }
+    };
+
+    document.onmouseup = function () {
+        document.onmousemove = null;
+    }
+
+
+</script>
+</body>
+</html>
