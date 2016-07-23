@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>汽车简介</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #content {
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #content h1 {
+            color: #0088bb;
+        }
+
+        #content .item {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px dotted #0088bb;
+        }
+
+        #content .item h2 {
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 2px solid #0088bb;
+            margin-bottom: 10px;
+        }
+
+        #content .item li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        #content .item li a img {
+            width: 230px;
+            height: 230px;
+            border: none;
+        }
+
+        #menu {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            margin-left: 400px;
+            width: 50px;
+        }
+
+        #menu ul li a {
+            display: block;
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            width: 80px;
+            height: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        #menu ul li a:hover,
+        #menu ul li a.current {
+            color: #fff;
+            background: #0088bb;
+        }
+
+        * html, * html body {
+            background-image: url(about:blank);
+            background-attachment: fixed;
+        }
+
+        * html #menu {
+            position: absolute;
+            bottom: auto;
+            top: expression(100+((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+'px');
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                var items = $("#content").find(".item");
+                var menu = $("#menu");
+                var top = $(document).scrollTop();
+                var currentId = ""; //滚动条现在所在位置的item id
+                items.each(function () {
+                    var m = $(this);
+                    //注意：m.offset().top代表每一个item的顶部位置
+                    if (top > m.offset().top - 300) {
+                        currentId = "#" + m.attr("id");
+                    } else {
+                        return false;
+                    }
+                });
+
+                var currentLink = menu.find(".current");
+                if (currentId && currentLink.attr("href") != currentId) {
+                    currentLink.removeClass("current");
+                    menu.find("[href=" + currentId + "]").addClass("current");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="menu">
+    <ul>
+        <li><a href="#item1" class="current">1F 路虎</a></li>
+        <li><a href="#item2">2F 奥迪</a></li>
+        <li><a href="#item3">3F 红旗</a></li>
+    </ul>
+</div>
+<div id="content">
+    <h1>汽车之家</h1>
+
+    <div id="item1" class="item">
+        <h2>1F 路虎--揽胜运动版</h2>
+
+        <ul>
+           <li><a href="#"><img src="4.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="5.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="6.jpg" alt=""/></a></li>
+        </ul>
+        <div>新车指导价格：149.80~329.80万</div>
+            <div>二手价格：23.80~229.80万</div>
+            <div>生产方式：进口</div>
+            <div>类型级别：中大型SUV</div>
+            <div>整车质保：3年或10万公里</div>
+            <div>排量：2.0T/3.0T/5.0T</div>
+            <div>变速箱：AT</div>
+            <div>油耗：7.4L~13.1L/100km</div>
+            <div>路虎公司是世界上生产四驱车的公司之一，也是著名的英国越野车品牌。莫里斯.维尔克斯是路虎的第一创始人。1948年战后，第一款路虎诞生于英国。路虎在过去的几十年间已渐渐成为坚毅、恒久、舒适和优雅的代名词，被誉为全球豪华SUV的第一品牌。</div>
+             <h2>产品性能</h2>
+            <div>由于提升了燃油效率，该款混合动力车一箱油可行驶690英里（1110.447公里）。与标准揽胜运动版一样，揽胜Range_e 也具备全功能四驱能力。它装有高低档变速箱、前后差速器和机械锁式中央差速器。根据司机的要求，该车的智能化系统可决定提供所需动力的最有效的方法——包括电力、柴油和柴电混合方式。揽胜Range_e 还具有再生制动功能，可捕获刹车时以热能形式损耗的能量。这些能量可以重新用于驱动车辆，从而进一步降低油耗。路虎全球品牌总监John Edwards说：“该系统是第一款高级插电式混合动力车的样车，它还具有您所期望的四轮驱动能力。它是量产化柴油电力混合车技术的最新发展。我们将在新一代SUV中采用该项技术，并在今后两年内正式推出量产车型。”</div>
+            <h2>外形</h2>
+            <div>诞生半个多世纪以来，路虎几乎成为了大型豪华四驱SUV的代名词。以至于第一代神行者问世的时候，很多人认为路虎的做法是不务正业。如今，比神行者更迷你、更环保的揽胜Evoque（极光）驾临，跑车风格的外衣下面，它还是一辆真正的路虎么？比其它许多量产汽车大胆的是，Evoque几乎全盘继承了LRX概念车前卫的设计理念。最大的变化在于车头的身份标识由Land Rover变成了Range Rover，这就意味着归入高贵的揽胜家族以后，Evoque注定不会成为一只亲民的“小老虎”。极速下溜的车顶和上扬的腰线营造出跑车般的犀利感，让我们隐约看到了“战神”GT-R的影子。三门造型则进一步突出了Evoque的运动内涵——尽管未来的销售主力很有可能是随后发布的五门版本。</div>
+            <h2>内饰</h2>
+            <div>罗孚（Rover）是北欧的一个民族，由于罗孚民族是一个勇敢善战的海盗民族，所以罗孚汽车商标采用了一艘海盗船，张开红帆象征着公司乘风破浪、所向披靡的大无畏精神。兰德-罗孚是全球著名的越野汽车，标志就是英文：LAND-ROVER。</div>
+            
+            <div>550马力/680牛米、百公里加速仅需4.7秒、最高时速260公里/小时，这组数据听上去无论如何都不像是在形容一款SUV，不过当下就连IT大亨们都在跨界涉足汽车领域，这样想来传统汽车制造商打造媲美跑车的高性能SUV也算不上奇闻异事。开头所罗列的数字属于揽胜运动版SVR，这款迄今为止速度最快的路虎车型在纽博格林创造了8分14秒的量产SUV最快圈速。</div>
+    </div>
+    <div id="item2" class="item">
+        <h2>2F 奥迪A6L</h2>
+        <ul>
+            <li><a href="#"><img src="7.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="8.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="9.jpg" alt=""/></a></li>   
+        </ul>
+        <div>新车指导价格：149.80~329.80万</div>
+            <div>二手价格：23.80~229.80万</div>
+            <div>生产方式：合资</div>
+            <div>类型级别：中大型车</div>
+            <div>整车质保：3年或10万公里</div>
+            <div>排量：1.8T/2.5T/3.0T</div>
+            <div>变速箱：CVT/双离合</div>
+            <div>油耗：6.5~8.6L/100km</div>
+            <div>奥迪A6（Audi A6）是一款由奥迪生产的豪华汽车，有轿车和旅行车两种车型。它的主要竞争对手包括梅塞德斯-奔驰E级、宝马5系、阿尔法·罗密欧166、捷豹S型、雷克萨斯GS和沃尔沃S80。</div>
+            <h2>产品性能</h2>
+            <div>奥迪A6（Audi A6）是一款由奥迪生产的豪华汽车，有轿车和旅行车两种车型。它的主要竞争对手包括梅塞德斯-奔驰E级、宝马5系、阿尔法·罗密欧166、捷豹S型、雷克萨斯GS和沃尔沃S80。</div>
+            <div>奥迪A6的multitronic无级/手动一体式变速箱，在豪华轿车历史上，第一次实现了真正的无级变速。它采用金属链传动方式，彻底取代了传统的齿轮组变速方式，所以动力输出全无顿挫感，比普通自动变速更顺畅平滑，更拥有手动变速般的快捷灵敏，同时还更节省燃油，操控更舒适。新增设的S档，提高加速能力，增加驾驶乐趣。multitronic无级/手动一体式变速箱的最迷人之处，就在于它最终克服了自动变速箱和手动变速箱的一切不足，一举超越二者的各项性能，实现了汽车变速箱技术的大飞跃。舒适与豪华背后，是奥迪细致入微的尖端科技，车载冰箱专为行驶移动的奥迪A6而设计，耐颠簸、倾斜。工作状态高度稳定。高品质的TV/DVD系统安全融入奥迪A6原有结构，功能多样，而且极易操作，电动高级桃木办公桌可谓符合人体工程的精心之作，只需轻触按钮，就能打开或放下桌板，可延伸，可旋转，可调角度，开车洒脱。</div>
+            <h2>外形</h2>
+            <div>在外形设计方面，与上一代奥迪a6相比，全新奥迪A6L外观上的最大变化是，前脸上原本被前保险杠分开的散热和进气格栅变成了一个完整的梯形格栅。这种奥迪家族最新成员的标志性前脸设计将复古、经典与现代、时尚有机地融为一体，既透着奥迪的创始人霍希在上世纪30年代统治德国顶级豪华车市场时的威严，又体现出奥迪自战后复兴以来突出科技和运动特点的品牌理念。</div>
+            <h2>内饰</h2>
+            <div>奥迪的内部风格一贯秉承形式与功能的完美统一，同时兼具温暖舒适的特点。而国产全新奥迪A6L将这一切推向了更高的境界，体现出动感与完美的人体工程学设计：在内饰方面，色彩和材料的和谐达到了浑然一体的状态，车厢内设计更具雕塑感，其华丽的材质、高贵的品味、和谐的色彩搭配和便捷的操作性再次显示了奥迪在车内设计方面无人企及的领先地位。</div>
+    </div>
+    <div id="item3" class="item">
+        <h2>3F 红旗H7</h2>
+
+        <ul>
+            <li><a href="#"><img src="10.png" alt=""/></a></li>
+            <li><a href="#"><img src="11.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="12.jpg" alt=""/></a></li>
+        </ul>
+        <div>新车指导价格：149.80~329.80万</div>
+            <div>二手价格：23.80~229.80万</div>
+            <div>生产方式：自主</div>
+            <div>类型级别：中大型车</div>
+            <div>整车质保：4年或10万公里</div>
+            <div>排量：1.8T/2.0T/3.0T</div>
+            <div>变速箱：AT</div>
+            <div>油耗：9.8L/100km</div>
+            <div>550马力/680牛米、百公里加速仅需4.7秒、最高时速260公里/小时，这组数据听上去无论如何都不像是在形容一款SUV，不过当下就连IT大亨们都在跨界涉足汽车领域，这样想来传统汽车制造商打造媲美跑车的高性能SUV也算不上奇闻异事。开头所罗列的数字属于揽胜运动版SVR，这款迄今为止速度最快的路虎车型在纽博格林创造了8分14秒的量产SUV最快圈速。</div>
+            <h2>产品性能</h2>
+            <div>在红旗H7上市之初，安铁成坦言，红旗项目投资超过16亿元，专门建立了独属于红旗的高档车生产制造基地。该基地引进了先进的设备工装，培养了大批高素质的员工队伍，具备了生产豪华车的基本水平。<br>
+            初期，红旗工厂规划是具备年产3万辆的规模，也为未来发展留下了足够的空间，视市场和品牌发展情况加以规划。<br>
+            上市一个月之后，许宪平明确了红旗品牌的市场定位，他说：“如果红旗年销量能做到3万辆，在这些豪华品牌里能排在第四位左右。第一奥迪，第二宝马，第三奔驰，要在中国有一定地位然后才能放眼全球。对红旗我们要有一个更长远的目标、规划和理想。”<br>
+            上市之初，张晓军告诉记者，所有欧系高档车都是红旗的竞争者。一汽轿车相关负责人表示，这次红旗品牌复兴的路径是直接从C级车往上走，覆盖C级车、D级车和E级车。<br>
+            资料显示，红旗有H平台和L平台。H平台生产的C级车包括已经上市的红旗H7，L平台生产D级车和E级车。“L平台里还有两个整车平台，一个是成长型平台，一个是非成长平台。这三个平台会衍生出很多车型，并将陆续投放市场。”<br>
+            按照产品规划，一汽未来将择机向宽系列、全覆盖发展。2013年至2015年，一汽将继续加大红旗品牌的研发投入力度，金额将超过105亿元。</div>
+            <h2>外形</h2>
+            <div>红旗图形商标立在发动机盖的前端；另一商标是在椭圆中有一带羽毛的“1”，表示“中国第一汽车集团”。该商标镶嵌在散热器的正中；文字“红旗”商标则标注在车尾。 红旗新商标以“第一”的“一”字型为依托，将代表全球的椭圆与“1”字型有机结合起来，构成简洁、流畅、活泼的造型，强调了“第一”的品牌名称及其意义。</div>
+            <h2>内饰</h2>
+            <div>旗舰系列使用了排量4.6l的v型8缸462型发动机，最大功率198kw。作为红旗品牌的最高级别车型，旗舰内的装备也很奢华，在加长型的的旗舰内，甚至可以找到电视、vcd、冰箱、酒柜、中隔墙等装备。但旗舰的造型和技术，还是没有逃脱掉外国车型的影响，从外形到内饰上都可以看到林肯towncar轿车的影子。</div>
+    </div>
+</div>
+</body>
+</html>

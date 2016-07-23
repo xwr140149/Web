@@ -121,6 +121,10 @@ body{
     cursor: pointer;
 }
 
+.top-list a{
+    display: block;
+}
+
 .top-list-item {
     float: left;
     line-height: 48px;
@@ -146,11 +150,11 @@ body{
 
 }
 
-.drop-list1:hover, .drop-list-inner:hover, .drop-sub-content:hover {
+ .drop-list-inner:hover, .drop-sub-content:hover {
     background-color: #E5E5E5;
 }
 
-.drop-list2 span {
+.drop-list2 span ,.drop-list1 span{
     float: right;
     margin-right: 10px;
 }
@@ -314,7 +318,7 @@ body{
 }
 
 .nav .search-car-li{
-    margin: 17px 0 0 63px;
+    margin: 17px 0 0 54px;
     padding-right: 0;
 }
  .search-car {

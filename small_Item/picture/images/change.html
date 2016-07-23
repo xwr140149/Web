@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <title>关于本站|联系我们</title>
+    <style type="text/css">
+        .mu .liSelected{background-color:#FFA11F;color:#0978D1}
+        .mu li{background-color:#0978D1;color:#FFF}
+        .mu li:hover{color:red}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="main">
+        <div class="logo aLogo"><a class="logo_a" title="设为首页"></a></div>
+        <div class="bdn">当前位置：
+            <a href="./">首页</a> >> 关于本站
+        </div>
+        <div class="lmu">
+            <div class="idt">关于本站</div>
+            <div class="mu" id="mu">
+                <ul>
+                    <li>关于本站</li>
+                    <li>诚聘英才</li>
+                    <li>联系我们</li>
+                    <li>使用声明</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var mu = document.getElementById("mu");
+        var li = mu.getElementsByTagName("li");
+        mu.onclick = function(e){
+            e = e || window.event;
+            var target = e.srcElement || e.target;
+            console.log(target);
+            for(var i=0,len=li.length;i<len;i++){
+                li[i].className = target == li[i] ? "liSelected":"";
+            }
+        };
+    </script>
+</div>
+</body>
+</html>
