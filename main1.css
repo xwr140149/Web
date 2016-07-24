@@ -1,0 +1,329 @@
+/*通配符选择器 穿透力很强 优先级高于继承的样式 会覆盖继承的样式 一般不用*/
+*{
+	margin:0;
+	padding:0;
+}
+
+/*标签选择器*/
+a {
+	color: yellow;
+}
+.green{
+	width: 400px;
+	height: 400px;
+	background-color: blue;
+	color: #ccc;
+}
+
+/*ID选择器 字母数字下划线 严格区分大小写 只能字母开头 不能出现标签名*/
+#p1{
+
+}
+
+/*类选择器*/
+.cor{
+	color:red;
+}
+
+.cor1{
+	color: blue;
+}
+/*复合选择器 即。。又。。*/
+h3.h4{
+	color: red;
+}
+
+/*后代选择器*/
+.box li{
+	color:green;
+}
+
+.box li{
+	font-size: 12px;
+}
+
+/*子代选择器 只选取父类的子类*/
+h1>strong{
+
+}
+
+/*属性选择器 把拥有某属性的所有标签选出来*/
+h1[id][class]{
+	/*所有同时拥有id和class的h1标签*/
+}
+
+input[type="text"]{
+	/*所有type="text"的input标签*/
+}
+
+/*伪类选择器 
+:link 所有未被访问过的链接 IE6不兼容;
+:hover 鼠标悬停于某个元素上方 IE6只能用于a标签;
+:active 正在点击的链接或者按钮;
+:visited 已经被访问过的链接;
+:focus 拥有键盘输入焦点的元素;
+顺序问题：LoVe HAte
+*/
+
+/*CSS伪元素
+:first-line:伪元素;第一行
+:first-letter 伪元素; 第一个字符   这两个伪元素只能用于块级元素
+:first-child 伪元素 选择属于第一个子元素的元素
+:before和:after伪元素 可以设置元素之前和之后的内容 并且配合content设置相关内容;
+
+*/
+
+.wrap:before, .wrap:after{
+	content: "____________";
+	display: block; 
+	/*让当前伪类由行内元素变为块级元素*/
+}
+
+
+/*CSS继承
+
+孩子会继承父类的文字相关的样式eg：color text-系列 font-系列 line-系列 cursor
+ 盒子相关的不能继承eg：边框 外边距 内边距 背景 定位 元素宽高属性等
+ 一般会给body一个字体设置 所有标签都会继承*/
+
+
+ /*css优先级
+
+ 内联样式>ID选择器>类选择器>标签选择器>通配符>继承>默认
+ 256个标签选择器相加大于一个类选择器
+ 256个类选择器相加大于一个ID选择器
+
+	display:none;  直接移除 不占空间
+	visibility:hidden; 不显示 但是还占空间
+ */
+
+ /*1in=2.54cm=25.4mm==96px*/
+
+
+ /*border-collapse:collapse;
+清除单元格之间的间隙
+ */
+
+ /*当一个大盒子套一个小盒子的时候 并且小盒子没有设置宽度，
+ 那么这时候给小盒子设置padding-left不会改变盒子的大小*/
+
+ /*body4个margin  h p上下margin ul上下margin左边的padding 有默认的margin和padding     
+ 可以用通配符清除*/
+
+ 行高是可以继承的。
+ 行高的单位：具体的像素值，em，%，也可以什么单位也不带 这时候单位和em一样 但是继承不一样！此时会
+ 先将行高继承给子元素 再计算行高
+ 浏览器的默认字体大小是16px；1em=16px；em指的是当前标签设置的字体大小 
+ %的基数也是当前标签设置的字体大小
+
+ 行高与font的关系：
+ font:font-style font-width font-size/line-height font-family;
+
+ margin的两种现象：
+ 外边框的合并现象：如果两个div上下排列，上面的margin-bottom和下div的margin-top会取较大的那一个
+ margin的塌陷现象：一个大盒子包含一个小盒子，给小盒子设置margin-top 大盒子会一起向下平移，解决
+ 	办法：给大盒子设置border 或者设置overflow：hidden 让小盒子浮动也行 float：left
+
+
+
+浮动：
+标准流：浏览器默认摆放盒子的标准
+浮动的元素会脱离标准流
+浮动找浮动  不浮动找不浮动
+浮动的元素只影响下面的元素 不会影响上面的元素
+
+浮动的元素会改变显示方式，可以设置宽高，和行内块级元素一样
+
+list-style:none;
+text-decoration:none;
+dashed:虚线
+
+清除浮动：
+1、使用额外的标签：在浮动的盒子的父盒子之下再放一个标签，在标签中使用clean：both来清除浮动对页面的影响
+	这种做法 父盒子的高度还是不会被撑开
+	若是放在父盒子的最下面 就会把父盒子的高度撑开
+一般不会用这种方法清除浮动（会增加页面不必要的标签）
+
+2、overflow
+	在浮动盒子的父元素中加 overflow：hidden
+	一般情况下也不用  overflow：hidden有个特点离开了这个元素所在的区域以后会被隐藏
+	（学完overflow以后就明白了）
+
+3、伪元素清除浮动
+	伪元素：行内元素 在页面上不存在的元素，但是可以通过css来添加上去
+	属性：
+	：after （在。。。之后）
+	：before （在。。。之后）
+
+	p:before{
+		content: "h";
+	}
+	p:after{
+		content: "d";
+	}
+	<p>ello world</p>
+
+	
+
+	.clearfix:after{
+		content: "";
+		height: 0;
+		line-height:0;
+		display: block;
+		clear:both;
+		visibility:hidden;将元素隐藏起来
+		
+	}添加一个空的块级元素，这个元素的高为0，行高也是0，并且这个元素清除了浮动
+	.clearfix {
+		zoom:1;为了兼容IE6
+	}
+	将这个样式加到浮动的父元素上
+
+
+
+
+定位：解决页面上盒子与盒子之间的层叠问题
+
+position:static;静态定位
+	所有标准流中的元素都是静态定位
+
+relative:相对定位
+	保存原来位置，相对自己原来的位置进行偏移 仍然在文档流中
+
+absolute:绝对定位
+	相对于最近的一个定位（非static）了的父元素移动，脱离了文档流
+
+fixed:固定定位
+	也是绝对定位
+
+
+写页面用的最多的是relative和absolute想结合  子绝父相
+
+background: url() no-repeat top center;
+
+
+vertical-alian:设置文本和图片的对齐方式 img中设置
+	middle:中间对齐
+
+	图片margin-top 向下移动2个像素 文字移动1个像素
+
+overflow：
+	hidden：会将超出文本的地方隐藏起来
+	scroll：出现滚动条
+	auto：根据具体情况 判断是否加上滚动条
+
+
+元素的隐藏：
+ overflow：hidden 超出容器的部分裁剪掉
+ visibility：hidden 可以将元素隐藏 但是会保留位置
+ display：none  将元素隐藏 并且不占位置
+
+
+ emmet语法
+ ！+tap 生成html结构
+
+ p.one#one +tap
+
+ p.one#one+.one#one +tap
+
+ ul>li*3>a[href="#"]{导航$} +tap
+
+
+
+
+定位中的Z-index：
+	设置页面中元素的层级关系 大于0的正整数
+
+标签之间不能随意嵌套
+如果一定要嵌套要满足下面几条：
+	行内元素只能包含行内元素
+	块级元素可以包含所有的行内元素和部分块级元素
+	p标签和h标签都不能包含块级元素
+
+
+精灵图：雪碧图 css sprite
+将页面上较小的图片放在一张大图上
+必须知道我们所需图的大小和其在图上的坐标，在显示的时候，容器的大小一定要和图片的大小一样
+background: url() no-repeat 0px 0px;
+
+
+
+整站的开发布局：
+1、从上到下依次编写，符合我们的认知
+2、模块化的角度，
+
+
+透明度：
+opacity（不透明度）:取值为0~1之间的小数
+这个属性IE6不支持 
+IE6：filter:Alpha(opacity=50);
+
+
+
+/*font: 字体样式 字体是否加粗 字体大小/line-height 字体类型
+没有的可以省略 但是font-size和font-family不能省略
+*/
+p{
+	font:oblique 700 20px "微软雅黑";
+}
+.letter-spacingdemo{
+	letter-spacing: 10px;
+	/*控制字符间距*/
+	word-spacing:20px;
+}
+
+a{
+	background-color: silver;
+	font: 700 20px "微软雅黑"；
+	display:block;
+	width:200px;
+	height:50px;
+	line-height: 50px;
+	text-decoration: none;
+	letter-spacing: 30px;
+	text-align: center;
+}
+/*text-decoration:
+none;
+underline:下划线;
+overline:顶线;
+line-through:删除线;
+
+
+text-indent:首行缩进只能设置块级标签 可以设置负值
+;
+
+
+white-space:
+normal:正常显示 宽度不够自动换行;
+nowrap:空格空行无效 超过一行也继续显示;
+pre:空格换行全部显示;
+
+
+word-break:
+normal 不打断单词 自动换行
+break-all:折断单词换行;
+keep-all:空格和换行符才换行;
+
+
+;
+*/
+
+
+/*盒子模型
+IE6 背景色不能穿透边框
+去掉边框 兼容性最好的：
+border:0 none;
+
+
+
+*/
+
+.box{
+	width:0px;
+	height:0px;
+	border:10px solid transparent;/*透明色*/
+	border-bottom-color: green;
+	/*border-top:0 none;*/
+/*画个圣诞树*/
+}

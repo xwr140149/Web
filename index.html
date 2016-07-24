@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	/**/
+</style>
+<script>
+	// 编程就是把需求分解成一组函数与数据结构的能力
+	// 重载：函数的名字相同，但是参数个数不同
+	// JS中米有重载的概念，只会重写
+
+	// 函数声明
+
+	function fnName(a,b) {
+		return a+b;
+	}
+
+	// 函数表达式
+	fnName();//fnName is not a function
+	var fnName=function (a,b){
+		return a+b;
+	}
+
+
+	// 全局作用域，在任何位置都可以访问
+
+
+
+	// 局部作用域，在函数内部声明一个变量，只能在该函数内部使用
+	// 当变量超出作用域之后，变量会被垃圾回收机制 销毁
+	// 不用var修饰的变量是全局变量
+	// 函数内部可以访问到该函数所属的外部作用域的变量（作用域链）
+
+
+	{
+		// 代码块
+		// 在其他语言中，在代码块中定义的变量，外部是访问不到的，但是JS中没有块级作用域，块里定义的变量都是全局变量
+
+		// for(){}  if(){}
+
+		// 全局变量
+		var a="Hello"
+		console.log(a);//Hello
+	}
+
+	console.log(a);//Hello
+
+
+
+	var array=[1,2,3,4];
+
+	function getMax(array){
+		array= array || [];
+		if(array.length==0)
+		{
+			return;//返回undefined 要是没有return 返回的也是undefined
+		}
+		var max =array[0];
+		for (var i=0;i<array.length;i++)
+		{
+			max=max<array[i]? array[i]:max;
+		}
+		return max;
+	}
+
+
+
+
+
+
+	// 判断一个数是不是素数
+
+	function isZhiShu(n){
+		var isZS=true;//假设是素数
+		// 除了1和本身，还有没有能整除n的数
+		for(var i=2;i<=Math.sqrt(n);i++){
+			if (n%i===0){
+				// 不是素数
+				isZS=false;
+				break;
+			}
+		}
+		// 返回值 布尔值
+		return isZS; 
+	}
+
+
+
+
+	// 求阶乘
+	function getJS(n) {
+		var num=1;
+		for (var i=2;i<n+1;i++){
+			num *= i;
+		}
+		return num;
+	}
+
+
+
+
+	//求1！+2！+...+n！
+	function getSum(n){
+		var sum=0;
+		for (var i=0;i<n+1;i++){
+			sum += getJS(i);
+		}
+		return sum;
+	}
+
+
+
+	//求 Fibonacci 中第n个数是什么
+
+	function getF(n){
+		n=n||0;
+		if(n<=0){
+			return -1;//无意义
+		}
+
+		var n1=1;
+		var n2=1;
+		for (var i=3;i<n+1;i++){
+			sum=n1+n2;
+			n1=n2;
+			n2=sum;
+		}
+		return n2;
+	}
+
+
+
+	// 输入某年某月某日 判断这是这一年的第几天
+	function getDays(year ,month,day) {
+		var days=day;//总共多少天
+		// //如果是1月的话 直接返回天数
+		// if(month ===1){
+		// 	return day;
+		// }
+		// //不是1月
+		var months=[31,28,31,30,31,30,31,31,30,31,30,31];
+		for (var i=0;i<month-1;i++){
+			days+=months[i];
+	}
+
+	//2月份的天数 是闰年 而且月份大于2 就+1  闰年：能被400整除或者能被4整除不能被100整除
+	if (month>2 && isRun(year)){
+		days++;
+	}
+		return days; 
+	}
+	
+	function isRun(year){
+		if ((year %4 ===0 && year %100!==0) || year % 400===0){
+			return true;//是闰年
+			}
+		
+			return false;//不是闰年
+		
+	}
+
+// 求n个数的累加
+function getSum(n){
+	if(n===1){
+		return 1;
+	}
+	return n+getSum(n-1);
+}
+
+
+// 输入一个数，求这个数的个位数字之和
+function getSum(n)
+{
+	if(n<10){
+	return n;	
+	}
+	return n%10+getSum(parseInt(n/10));
+}
+
+
+// 求Fibonacci的第n个数
+
+function getF(n){
+	if(n<1){
+		return -1;
+	}
+
+	if (n == 1 || n ==2){
+		return 1;
+	}
+
+	return getF(n-1)+getF(n-2);
+}
+
+
+
+// 函数是一种数据类型
+
+
+
+// 函数可以作为另一个函数的参数
+
+function getResult(a,b,fn){
+	return fn(a,b);
+}
+var result=getResult(5,6,function(a,b){
+	return a+b;
+});
+console.log(result);//11
+
+// 函数作为参数的 另一个例子
+function f1(a,fn){
+	fn(a);
+}
+
+var n=5;
+var myFun=function(a){
+	console.log(a);
+}
+
+f1(n,myFun);
+
+
+
+
+
+
+// 对象具有特征和行为
+// 面向对象：可以创建自定义的类型，很好的支持继承和多态
+// 基于对象：无法创建自定义的类型，不能很好的支持继承和多态，没有抽象类接口，JS是基于对象的 但是可以模拟面向对象的特征 
+// JS中的对象：无序属性的集合
+
+// 创建对象
+
+// 构造函数的第一个字母大写
+// 内存中开辟空间，创建一个对象，这个对象没有属性和方法（其实有一些属性和方法）
+// 返回刚刚创建的对象
+// new Object();
+
+
+// 函数和方法的区别：函数：直接调用的是函数alert（）；方法 通过对象调用的是方法 hero.attack(); 
+var hero=new Object();//没有任何的特征和行为的空对象
+// 属性-特征 名词
+hero.name="xm";
+hero.level=0;
+hero.diamond=0;
+
+// 方法-行为 动词
+hero.moveLeft=function (){
+	console.log("left");
+}
+hero.attack=function (name){
+	console.log(this.name+"攻击"+name);
+}
+
+
+function createStudent(name,age,sex,score){
+	//通过构造函数，创建对象
+	var student =new Object();
+	//对象的属性
+	student.name=name;
+	student.age=age;
+	student.sex=sex;
+	student.score=score;
+	//对象的方法
+	student.sayHi=function(){
+		console.log("大家好，我是"+this.name);
+	}
+	//返回对象
+	return student;
+}
+
+var s1=createStudent("mh",18,"男",18);
+s1.sayHi();
+
+// 自定义构造函数 创建一个对象并且返回的函数
+// 调用构造函数 new Object();
+function Person(name,age,sex,score){
+	this.name=name;
+	this.age=age;
+	this.sex=sex;
+	this.score=score;
+	this.sayHi=function(){
+		console.log("Hello My name is"+this.name);
+	}
+}
+
+
+// 1、内存开辟空间，存储新创建的对象new Object();
+// 2、会把this设置为当前对象
+// 3、执行函数内部的代码，设置对象的属性和方法
+// 4、返回新创建的对象
+var s1=new Person("zs",18,1,10);
+s1.sayHi();
+console.log(s1.name);
+console.log(s1["name"]);//两种写法一样，这是键值对的写法
+
+// 用键值对给对象赋值 这样比较简单
+for (i=0;i<10;i++){
+	s1["n"+i]=i;
+}
+console.log(s1.n2);
+
+
+for (var key in s1){//for in 遍历对象的属性或者方法
+	console.log(key);//输出对象中的所有键
+	console.log(s1.key);//输出s1对象的key值，没有定义key 所以输出undefined
+	console.log(s1[key]);//输出所有的值
+}
+
+
+// JS中没办法直接操作内存地址
+// 基本类型作为函数的参数
+function f1(a){
+	a=100;
+}
+var x=1;
+f1(x);
+console.log(x);//1
+
+
+// 复杂类型作为函数的参数,函数内部对参数的修改，会影响外部变量
+function f2(stu){
+	stu.name="xxx"
+}
+var s=new Person("zs",18,1,99);
+f2(s);
+console.log(s.name);//xxx
+
+
+
+//instanceof 关键字 是否是谁的对象 只能判断对象的类型
+// typeof 可以获取任意变量的类型 但是任意类型的对象使用typeof 获取到的都是object
+var o=[];
+console.log(typeof o);//object
+console.log(o instanceof Array);//精确判断o是不是Array类型的对象
+function f1(arr){
+	//检测参数是否合法
+	arr=arr || [];
+	//检测是否是数组
+	if (!(arr instanceof Array)){
+		return;
+	}
+}
+
+
+
+
+// join
+var array=[3,2,1,4];
+console.log(array.toString());
+
+console.log(array.join());//返回用逗号分隔的字符串 和上面一样
+
+console.log(array.join("|"));//用|分隔
+</script>
+<body>
+	<!--  -->
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<!-- 文档的声明：当前文件是一个html文档 遵循的标准是html5 
+gif 小 兼容性好 支持动画、透明 只能处理256种颜色 
+jpg 表示色彩多 有损压缩，体积小有利于网络传输，一般用于广告，大的宣传图片和照片
+png 体积最小 颜色过渡更平滑 不支持动画IE6不太支持PNG-24 半透明的图片只能用PNG-24
+
+escape("微软雅黑") 在浏览器的console中转换
+中文转换为UTF-8 把百分号换成/
+
+衬线体：font-famliy:sans-serif
+要写在最后 
+font-weight：
+font-style:italic文字本身的斜体样式 oblique 让文字倾斜 normal 正常
+
+
+-->
+<html lang="en">
+<!-- SEO
+zh-CN 主要是中文 -->
+<head>
+	<!-- 用于嵌套 给浏览器使用的设置和配置标签 -->
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/main.css">
+	<!--------注释 影响SEO （搜索引擎的搜索 ）相关度越高 排名越靠前一定要和网页内容相关------------------>
+</head>
+
+	<body>
+		<img src="图片地址" alt="如果图片不显示" title="SEO 图片的描述 鼠标移上来的时候会有图片提示消息">
+
+
+		<p>我是小黑黑</p>
+		<p class="letter-spacingdemo">nihsiahoa年会 会死啊
+		HELLO WORD !</p>
+
+		<br>
+		<a href="#">按钮</a>
+
+
+
+		<!-- 用border标签绘制三角形 -->
+		<div class="box"></div>
+	</body>
+</html> -->

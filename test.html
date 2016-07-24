@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	// 解析器：从上到下 解释一行执行一行 这句话不对！！！在这之前还有一个预解析！找script标签中的所有全局var function 和参数 把var和function提前，紧贴着script标签，然后再是之前的步骤，执行到fun后进入局部作用域，会先预解析局部作用域的var和function，然后从上到下执行代码
+	var num=10;
+		fun();//undefinde
+		function fun(){
+			console.log(num);
+			var num=20;
+		}
+	//解析器的执行顺序：
+	// var num;
+	// functon fun(){
+	// 	var num;
+	// 	console.log(num);
+	// 	num=20;
+	// }
+	
+	// num=10;
+	// fun();//undefinde
+	
+
+
+// 2------------------------------------------
+	var a=18;
+	f1();// undefinde 9
+	function f1(){
+		var b=9;
+		console.log(a);
+		console.log(b);
+		var a='123';
+	}
+// 3--------------------------------------------
+f1();// 9 9 9 9 9 undefinde
+console.log(c);
+console.log(b);
+console.log(a);
+
+function f1 (){
+	var a=b=c=9;
+	console.log(a);
+	console.log(b);
+	console.log(c);
+
+}
+
+
+
+// 自调用函数 只能调用一次 避免函数命名的冲突 JQ 就是用的这种模式
+
+(function(){
+	console.log("test");
+})();
+	
+
+
+	
+</script>
+<body>
+
+	
+</body>
+</html>
