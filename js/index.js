@@ -276,13 +276,13 @@ var firstItems = getClass("first-top-part");
 for (var i = 0, len = firstItems.length; i < len; i++) {
     firstItems[i].onmouseover = function() {
         animate(this.children[0], { "top": "0" });
-        animate(this.children[3], { "height": "142", "marginBottom": "87" });
+        animate(this.children[3], { "height": "218"});
         animate(this.children[1], { "opacity": "0" });
         animate(this.children[2], { "opacity": "0" });
     };
     firstItems[i].onmouseout = function() {
-        animate(this.children[0], { "top": "-308" });
-        animate(this.children[3], { "height": "0", "marginBottom": "-61" });
+        animate(this.children[0], { "top": "-219" });
+        animate(this.children[3], { "height": "0"});
         animate(this.children[1], { "opacity": "1" });
         animate(this.children[2], { "opacity": "1" });
     };
@@ -431,7 +431,7 @@ var messageContent = getId("message-content");
 
 messageBtn.onclick = function() {
     if (messageTxt.value == "") {
-        alert("您还没有说出自己的愿望哦~");
+        alert("您什么也没有写~");
     } else {
         messageCount++;
         // 获取当前时间
@@ -851,39 +851,21 @@ function moveBall(balls, r, flag, v, ball) {
 
 // 产品展示
 var productDisplay = getClass("product-display")
-var produceBoxes = [];
-for (var i = 0; i < 18; i++) {
-    var div = document.createElement("div");
-    productDisplay[0].appendChild(div);
-    produceBoxes.push(div);
-}
-//随机显示字符
-var str = "truelovekiss"
+var produceBoxes = productDisplay[0].children;
+var produceFlag = true;
 var index = 0;
 //      为每个produceBox注册事件
 for (var i = 0; i < produceBoxes.length; i++) {
     var produceBox = produceBoxes[i];
-    //单个produceBox注册
+  
     produceBox.onmouseover = function() {
-        var backgroundColor, backgroundA, fontColor, n = 0.33;
-
-        //各种随机样式
-        backgroundColor = parseInt(255 * 255 * 255 * Math.random()); //背景颜色
-        backgroundA = n + Math.random() * (1 - n); //背景透明度
-
-        // 可选方案
-        // fontColor =255 * 255 * 255 -backgroundColor;//补色方案
-        fontColor = parseInt(255 * 255 * 255 * Math.random()); //字体的随机颜色方案
-        index = parseInt(str.length * Math.random()); //随机颜色字符方案
-        // index++; //顺序字符方案
-        if (index >= str.length) {
-            index = 0;
+        if(produceFlag){
+            produceFlag = false;
+        index = parseInt(18 * Math.random()); 
+        this.innerHTML = "<img src='images/product"+index+".png'>";
         }
-
-        // 为bproduceBox设置style
-        this.style.backgroundColor = "#" + backgroundColor.toString(16);
-        this.innerHTML = str[index];
-        this.style.color = "#" + fontColor.toString(16);
-        this.style.opacity = backgroundA;
+    };
+    produceBox.onmouseout = function (){
+        produceFlag = true;
     }
 }
