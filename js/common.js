@@ -63,7 +63,7 @@ setTimeout(function() {
     var bigContainer = getId("bigcontainer");
     var gears = getId("gears");
     bigContainer.style.overflow = "visible";
-    // bigContainer.style.height="0px";
+    bigContainer.style.height="0px";
     gears.style.display = "none";
 }, 2000);
 
@@ -358,12 +358,11 @@ for (var i = 0, len = dropLists.length; i < len; i++) {
 // 搜索按钮
 var searchDatas = ["a", "abc", "abbbb", "abxxxx", "xyz", "abcdef", "abzzzz"];
 //先获取页面元素
-var txtSearch = document.getElementById("txtSearch");
+var txtSearch = getId("txtSearch");
 var topSearch = getId("search-float");
 
 //在选中txtSearch的时候，检测键盘输入
 txtSearch.onkeyup = function() {
-    //找到词库中我想要的：以我输入的内容开头的元素
     //这个数组用于存储词库中满足条件的元素
     var resultArr = [];
     for (var i = 0; i < searchDatas.length; i++) {
@@ -381,7 +380,7 @@ txtSearch.onkeyup = function() {
     //获取页面中的pop，看看有没有
     var pop = document.getElementById("pop");
 
-    //如果有pop，获取结果是一个标签，也就是一个对象，对象转换为bool为true
+    //如果有pop
     if (pop) {
         //删除掉旧的pop
         topSearch.removeChild(pop);

@@ -41,23 +41,23 @@ var carouselArrRight = carousel.children[2];
 //获取carouselUl中的所有图片
 var carouselLisUl = carouselUl.children;
 //获取carouselScreen的宽度，这个宽度等于图片宽
-var caeouselImgWidth = carouselScreen.offsetWidth;
+var carouselImgWidth = carouselScreen.offsetWidth;
 //设置定时器
 var carouselTimer = null;
 
 //--------------------------点击按钮变色和移动carouselUl效果-------------------
-//2根据图片数量创建下面的小圆点
+//根据图片数量创建下面的小圆点
 for (var i = 0; i < carouselLisUl.length; i++) {
     var newLi = document.createElement("li");
     carouselOl.appendChild(newLi);
     //设置newLi的文本
 
 }
-//3设置第一个按钮默认选中效果
+//设置第一个按钮默认选中效果
 var carouselLisOl = carouselOl.children;
 carouselLisOl[0].className = "current";
 
-//4给小方块设置点击按钮变色
+//给小方块设置点击按钮变色
 for (var i = 0; i < carouselLisOl.length; i++) {
     //给每个按钮设置自定义属性，记录索引值
     carouselLisOl[i].index = i + 1;
@@ -70,7 +70,7 @@ for (var i = 0; i < carouselLisOl.length; i++) {
         }
         this.className = "current";
         //让carouselUl运动
-        var carouselTarget = -this.index * (caeouselImgWidth + 10);
+        var carouselTarget = -this.index * (carouselImgWidth + 10);
         animate(carouselUl, { "left": carouselTarget });
 
         //每一次点击小方块的时候，不仅要做上面的事情，还需要同步pic的值
@@ -108,12 +108,12 @@ carouselArrLeft.onclick = function() {
         //如果pic已经是1，就不能再向左滚动了，需要调到后面
         if (pic == 1) {
             pic = liCount - 2;
-            carouselUl.style.left = -(caeouselImgWidth + 10) * pic + "px";
+            carouselUl.style.left = -(carouselImgWidth + 10) * pic + "px";
         }
         pic--;
 
         //让carouselUl滚动到指定位置
-        var carouselTarget = -pic * (caeouselImgWidth + 10);
+        var carouselTarget = -pic * (carouselImgWidth + 10);
         animate(carouselUl, { "left": carouselTarget }, function() {
             threeWrapFlag = true;
         });
@@ -151,12 +151,12 @@ function play() {
         //当调用的时候，发现pic已经是liCount - 2了，这会儿需要进行抽回
         if (pic == liCount - 2) {
             pic = 1;
-            carouselUl.style.left = -(caeouselImgWidth + 10) * pic + "px";
+            carouselUl.style.left = -(carouselImgWidth + 10) * pic + "px";
         }
         pic++;
 
         //让carouselUl滚动到指定位置
-        var carouselTarget = -pic * (caeouselImgWidth + 10);
+        var carouselTarget = -pic * (carouselImgWidth + 10);
         animate(carouselUl, { "left": carouselTarget }, function() {
             threeWrapFlag = true;
         });
