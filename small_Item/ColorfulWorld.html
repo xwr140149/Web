@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ColorfulWorld</title>
+    <style>
+    div {
+        background-color: rgba(255, 0, 0, 0.5);
+        width: 150px;
+        height: 150px;
+        float: left;
+        margin: 20px;
+        font-size: 30px;
+         text-align: center; 
+         line-height: 150px; 
+    }
+    </style>
+</head>
+
+<body>
+    <script>
+    /**
+     * 需求
+     *
+     *每次鼠标划过box，他们都会改变颜色
+     */
+    //创建div对象
+    var boxes = [];
+    for (var i = 0; i < 21; i++) {
+        var div = document.createElement("div");
+        document.body.appendChild(div);
+        boxes.push(div);
+    }
+    //随机显示字符
+    var str = "truelovekiss"
+    var index = 0;
+    //      为每个box注册事件
+    for (var i = 0; i < boxes.length; i++) {
+        var box = boxes[i];
+        //单个box注册
+        box.onmouseover = function() {
+            var backgroundColor, backgroundA, fontColor, n = 0.33;
+
+            //各种随机样式
+            backgroundColor = parseInt(255 * 255 * 255 * Math.random()); //背景颜色
+            backgroundA = n + Math.random() * (1 - n); //背景透明度
+
+            // 可选方案
+            // fontColor =255 * 255 * 255 -backgroundColor;//补色方案
+            fontColor = parseInt(255 * 255 * 255 * Math.random()); //字体的随机颜色方案
+            // index = parseInt(str.length * Math.random());//随机颜色字符方案
+            index++; //顺序字符方案
+            if (index >= str.length) {
+                index = 0;
+            }
+
+            // 为box设置style
+            this.style.backgroundColor = "#" + backgroundColor.toString(16);
+            this.innerHTML = str[index];
+            this.style.color = "#" + fontColor.toString(16);
+            this.style.opacity = backgroundA;
+        }
+    }
+    </script>
+</body>
+
+</html>

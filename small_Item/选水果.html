@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选水果</title>
+	<style>
+		select{
+			width: 150px;
+			background-color: #0099cc;
+		}
+	</style>
+</head>
+<body>
+	<!-- 左边的下拉菜单 -->
+	<select id="all" size="10" multiple="multiple">
+		<option >苹果1</option>
+		<option >苹果2</option>
+		<option >苹果3</option>
+		<option >苹果4</option>
+		<option >苹果5</option>
+	</select>
+
+	<!-- 四个选择按钮位置 -->
+	<input type="button" value=">>" id="allRight">
+	<input type="button" value="<<" id="allLeft">
+	<input type="button" value=">" id="right">
+	<input type="button" value="<" id="left">
+
+	<!-- 右边的下拉菜单 -->
+	<select id="select" size="10" multiple="multiple">
+		
+	</select>
+
+	<script>
+		function my$(id){
+			return document.getElementById(id);
+		}
+
+		/**
+	     *
+	     * @param current 当前的元素在哪个区域
+	     * @param tar     要移动到哪个区域
+	     */
+	    function moveSelected(current,next){
+	    	var son=current.children;
+	    	for (var i=0,len=son.length;i<len;i++){
+	    		if(son[i].selected){
+	    			next.appendChild(son[i]);
+	    			i--;
+	    		}
+	    	}
+	    }
+
+    // 获取页面元素
+    var right=my$("right");
+    var allRight=my$("allRight");
+    var left=my$("left");
+    var allLeft=my$("allLeft");
+    var all=my$("all");
+    var select=my$("select");
+
+	// 点击按钮
+	right.onclick=function(){
+		moveSelected(all,select);
+	};
+
+	left.onclick=function(){
+		moveSelected(select,all);
+	};
+
+	allRight.onclick=function(){
+		for (var i=0,len=all.length;i<len;i++){
+			select.appendChild(all[0]);
+		}
+	};
+
+	allLeft.onclick=function (){
+		for (var i=0,len=select.length;i<len;i++){
+			all.appendChild(select[0]);
+		}
+	};
+
+	</script>
+</body> 
+</html>

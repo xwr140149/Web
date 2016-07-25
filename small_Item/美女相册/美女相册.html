@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>美女相册</title>
+	<style>
+		body {
+            font-family: "Helvetica", "Arial", serif;
+            color: #333;
+            background-color: #ccc;
+            margin: 1em 10%;
+        }
+
+        h1 {
+            color: #333;
+            background-color: transparent;
+        }
+
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+
+        #imagegallery {
+
+            list-style: none;
+        }
+
+        #imagegallery li {
+            margin: 0px 20px 20px 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #imagegallery li a img {
+            border: 0;
+        }
+	</style>
+</head>
+<body>
+	<h2>
+    美女画廊
+</h2>
+<a href="#">注册</a>
+<ul id="imagegallery">
+    <li><a href="images/1.jpg" title="美女A">
+        <img src="images/1-small.jpg" width="100" alt="美女1"/>
+    </a></li>
+    <li><a href="images/2.jpg" title="美女B">
+        <img src="images/2-small.jpg" width="100" alt="美女2"/>
+    </a></li>
+    <li><a href="images/3.jpg" title="美女C">
+        <img src="images/3-small.jpg" width="100" alt="美女3"/>
+    </a></li>
+    <li><a href="images/4.jpg" title="美女D">
+        <img src="images/4-small.jpg" width="100" alt="美女4"/>
+    </a></li>
+</ul>
+
+<div style="clear:both"></div>
+<!--用于显示大图-->
+<img id="image" src="images/placeholder.png" alt="" width="450px"/>
+<!--用于显示这个图片的名称-->
+<p id="des">选择一个图片</p>
+
+	<script>
+    //1、第一步获取页面元素
+    //由于页面中除了我们需要的a标签以外还有其他a，所以我们从imagegallery中获取a标签
+    var ul = document.getElementById("imagegallery");
+    var links = ul.getElementsByTagName("a");
+    var image = document.getElementById("image");
+    var des = document.getElementById("des");
+
+    //2、给每一个a添加点击事件
+    for (var i = 0; i < links.length; i++) {
+        links[i].onclick = function () {
+            //3、让下面区域的图片更换为a的href属性
+            image.src = this.href;
+            //4、让下面的des的文本更换为a的title属性
+            des.innerHTML = this.title;
+            //5、取消a的默认事件
+            return false;
+        };
+    }
+
+
+</script>
+</body>
+</html>

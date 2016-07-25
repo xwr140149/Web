@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>许愿墙</title>
+   <style>
+    body {
+        margin: 0 auto;
+        padding: 0px;
+        font-size: 12px;
+        background: url(images/bg.gif) repeat center 36px;
+        text-align: center;
+        background-color: #c30230;
+    }
+
+    #content {
+        margin-top:100px;
+        margin-left: 400px;
+        width: 960px;
+        background: url(images/content_bg.jpg) no-repeat left top;
+        height: 627px;
+    }
+
+    #content .tip{
+        position: absolute;
+        width: 227px;
+        left: 400px;
+        top: 100px;
+    }
+
+
+
+    #content .tip .tip_h{
+        width: 227px;
+        padding-top: 45px;
+        height: 23px;
+        text-align: left;
+        cursor: move;
+        background: url(images/tip1_h.gif) no-repeat left top;
+    }
+
+
+    #content .tip .tip_c {
+        width: 200px;
+        padding-left: 12px;
+        padding-right: 15px;
+        min-height: 40px;
+        text-align: left;
+        line-height: 20px;
+        max-height: 160px;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+        background: url(images/tip1_c.gif) repeat-y;
+        font: 400 22px/20px "微软雅黑";
+        text-indent:2em;
+    }
+
+    #content .tip .tip_f {
+        width: 227px;
+        height: 53px;
+        padding-top: 20px;
+        background: url(images/tip1_f.gif) no-repeat left top;
+    }
+
+    #content .close {
+        float: left;
+        font-size: 12px;
+        cursor: pointer;
+        color: #000000;
+    }
+
+    .clr {
+        clear: both;
+        overflow: auto;
+        display: block;
+        height: 0px;
+    }
+
+    #content .icon {
+        float: left;
+        width: 35px;
+        padding-left: 15px;
+        height: 35px;
+        text-align: center;
+    }
+
+    #content .name {
+        float: right;
+        padding-right: 15px;
+        text-align: right;
+        font-size: 14px;
+        line-height: 35px;
+        color: #C0F;
+    }
+
+    #content .num {
+        float: left;
+        padding-left: 7px;
+        width: 195px;
+    }
+
+    /*许愿B*/
+    ul{
+            list-style:none;
+        }
+
+        .box{
+            width: 350px;
+            margin:0;
+            /*border: 1px solid #000;*/
+            padding: 20px;
+            float: left;
+        }
+
+        textarea{
+            width: 280px;
+            height: 150px;
+            resize: none;
+            margin-left: 0;
+            padding:20px 10px 10px;
+            font: 400 22px/20px "微软雅黑";
+            text-indent: 2em;
+        }
+
+        ul{
+            width: 450px;
+            padding-left: 80px;
+        }
+
+        ul li{
+            line-height: 25px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        input{
+            float: right;
+        }
+
+        h3{
+            font: italic 600 28px/22px "微软雅黑";
+            text-align: center;
+            color:pink;
+        }
+
+        #btn{
+            border-radius: 6px;
+            background-color: deeppink;
+            border: 0;
+            padding: 0;
+            width:60px;
+            height: 30px;
+            margin-top:10px;
+            font:400 16px/35px "宋体";
+            color: white;
+            cursor:pointer;
+        }
+
+        /*.textarea{
+            font:400 15px/15px ;
+        }*/
+
+    /*许愿E*/
+    </style>
+</head>
+<body>
+    <!-- 填写愿望区 -->
+    <div class="box" id="weibo">
+        <h3>许愿板</h3>
+        <textarea name="" id="txt" cols="20" rows="10" class="textarea" ></textarea>
+        <button id="btn">许愿</button>
+    </div>
+    <!-- 显示愿望区 -->
+	<div id="content">
+    
+    </div>
+
+<script>
+    //用来记录当前层级到多少了
+    var zInd = 0;
+    var count=0;
+    // 获取元素
+    function myId(id){
+        return document.getElementById(id);
+    }
+
+    function createEle(tag){
+        return document.createElement(tag);
+    }
+
+    //先根据页面中已经存在的标签，克隆出多个纸条，用于一会儿放入页面
+    //获取存在的纸条
+    // 获取元素
+    var txt=myId("txt");
+    var btn=myId("btn");
+    var cc = myId("cc")
+    //获取存放纸条的大盒子
+    var box = myId("content");
+
+    btn.onclick=function(){
+        if(txt.value==""){
+            alert("您还没有说出自己的愿望哦~");
+        }else{
+            count++;
+            // 获取当前时间
+            var date=new Date();
+            var year=date.getFullYear();
+            var month=date.getMonth()+1;
+            var dates=date.getDate();
+            var hours=date.getHours();
+            var minutes=date.getMinutes();
+            var seconds=date.getSeconds();
+
+            var x=Math.random()*500+400;
+            var y=Math.random()*500+100;
+
+
+            // 创建许愿纸条
+            var tip=createEle("div");
+
+                tip.style.left = x + "px";
+                tip.style.top = y + "px";
+                tip.setAttribute("class","tip");
+                tip.setAttribute("id","tip"+count);
+            // 纸条头部
+            var tip_h=createEle("div");
+                tip_h.setAttribute("id","tip_h"+count);
+                tip_h.setAttribute("class","tip_h");
+                tip_h.title="双击关闭纸条";
+            var num=createEle("div");
+
+                num.setAttribute("class","num");
+                num.innerHTML="第["+count+"]条"+" "+year+"-"+month+"-"+dates+" "+hours+":"+minutes+":"+seconds;
+            var close=createEle("div");
+
+                close.setAttribute("class","close");
+                close.title="关闭纸条";
+                close.innerHTML="×";
+                tip_h.appendChild(num);
+                tip_h.appendChild(close);
+                tip.appendChild(tip_h);
+            // 许愿内容
+            var tip_c=createEle("div");
+
+                tip_c.setAttribute("class","tip_c");
+                tip_c.innerHTML=txt.value;
+                tip.appendChild(tip_c);
+            // 纸条尾部
+            var tip_f=createEle("div");
+
+                tip_f.setAttribute("class","tip_f");
+            var icon=createEle("div");
+
+                icon.setAttribute("class","icon");
+            var img=createEle("img");
+
+                img.src="images/bpic_1.gif";
+            var name=createEle("div");
+
+                name.setAttribute("class","name");
+                name.innerHTML="诚挚的许愿人"
+                icon.appendChild(img);
+                tip_f.appendChild(icon);
+                tip_f.appendChild(name);;
+                tip.appendChild(tip_f);
+
+            box.appendChild(tip);
+            // 清空许愿板中的内容
+            txt.value="";
+
+
+            // 点击纸条显示在最上层
+            tip.onclick = function () {
+                zInd++;
+            //将zInd设置给newNode
+            this.style.zIndex = zInd;
+
+    };
+
+            //双击纸条的头部或者单击叉号，关闭当前纸条
+            tip_h.ondblclick = function () {
+                //设置当前纸条的隐藏
+                this.parentNode.style.display = "none";
+            };
+            close.onclick = function () {
+                //设置当前纸条的隐藏
+                this.parentNode.parentNode.style.display = "none";
+            };
+
+             // 设置许愿条可拖拽
+             var drag=myId("tip_h"+count);
+             var dialog=myId("tip"+count);
+
+             drag.onmousedown=function(e){
+                var x=e.clientX - dialog.offsetLeft;
+                var y=e.clientY - dialog.offsetTop;
+                
+            document.onmousemove=function(e){
+                var currentX=e.clientX-x;
+                var currentY=e.clientY-y;
+
+                currentX=currentX<400? 400 : currentX;
+                currentX=currentX>1140? 1140 : currentX;
+                currentY=currentY<100? 100 : currentY;
+                currentY=currentY>550? 550 : currentY;
+
+                dialog.style.top=currentY+"px";
+                dialog.style.left=currentX+"px";
+             };
+            };
+
+            document.onmouseup = function (){
+                document.onmousemove = null;
+            };
+        }
+    };
+
+
+   
+
+
+    </script>
+
+
+</body>
+</html>
