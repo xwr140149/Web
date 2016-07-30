@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 动画</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 400px;
+			margin: 100px auto;
+		}
+		.box img {
+			width: 100%;
+			animation: change 4s linear infinite ;
+		}
+
+		@keyframes change {
+				0%{
+					transform:rotate(0deg);
+				}
+			    50%{
+					transform: rotate(180deg) scale(2);
+					opacity: 0.3;
+				}
+				100%{
+					transform: rotate(360deg) scale(1);
+					opacity: 1;
+				}
+		}
+
+	</style>
+</head>
+<body>
+<div class="box">
+	<img src="./images/fengche.png">
+</div>
+</body>
+</html>

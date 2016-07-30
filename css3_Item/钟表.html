@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>钟表</title>
+    <style>
+            .box{
+                 width: 200px;
+                 height: 200px;
+                 border: 10px solid #000;
+                 border-radius: 50%;
+                 margin: 100px auto;
+                 position: relative;
+            }
+            .line{
+                width: 4px;
+                height: 200px;
+                position: absolute;
+                left: 50%;
+                margin-left: -2px;
+                top: 0;
+                background: #ccc;
+            }
+            .line2{
+                 transform: rotate(30deg);
+            }
+            .line3{
+                transform: rotate(60deg);
+            }
+            .line4{
+                transform: rotate(90deg);
+            }
+            .line5{
+                transform: rotate(120deg);
+            }
+            .line6{
+                transform: rotate(150deg);
+            }
+            .cover{
+                width: 160px;
+                height: 160px;
+                background: #fff;
+                position: absolute;
+                left: 50%;
+                top:50%;
+                margin-left: -80px;
+                margin-top: -80px;
+                border-radius: 50%;
+            }
+            .hours{
+                 width: 6px;
+                 height: 60px;
+                 background-color: green;
+                 position: absolute;
+                 left: 50%;
+                 top: 50%;
+                 margin-left: -3px;
+                 margin-top: -60px;
+                /*
+                        秒钟走一圈60秒
+                        分钟走一圈是3600秒
+                        小时走按
+                        3600*12=43200
+                */
+                 animation:change 43200s linear infinite ;
+                transform-origin: center bottom;
+            }
+            .minitus{
+                width: 4px;
+                height: 70px;
+                background-color: yellowgreen;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -2px;
+                margin-top: -70px;
+                animation: change 3600s steps(60) infinite;
+                transform-origin: center bottom;
+            }
+            .seconds{
+                width: 2px;
+                height: 80px;
+                background-color:brown;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -1px;
+                margin-top: -80px;
+                transform-origin: center bottom;
+                /*
+                        linear 速度
+                        steps(步)
+                        假设我我要转360deg
+                        我分两步来执行这个动画
+
+                */
+                animation: change 60s steps(60) infinite;
+            }
+            .dotted{
+                 height: 20px;
+                 width: 20px;
+                 border-radius: 50%;
+                 background-color: pink;
+                 position: absolute;
+                 left: 50%;
+                 top: 50%;
+                 margin-left: -10px;
+                 margin-top: -10px;
+            }
+        
+            @keyframes change {
+                    from{
+
+                    }
+                    to{
+                         transform: rotate(360deg);
+                    }
+            }
+    </style>
+</head>
+<body>
+      <div  class="box">
+              <div class="line line1"></div>
+              <div class="line line2"></div>
+              <div class="line line3"></div>
+              <div class="line line4"></div>
+              <div class="line line5"></div>
+              <div class="line line6"></div>
+              <div class="cover"></div>
+              <div class="hours"></div>
+              <div class="minitus"></div>
+              <div class="seconds"></div>
+              <div class="dotted"></div>
+      </div>
+
+</body>
+</html>

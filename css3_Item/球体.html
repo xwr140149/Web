@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 渐变</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+
+		}
+
+		.radial-gradient{
+			   width: 200px;
+			   height: 200px;
+
+			   margin: 100px auto;
+			   border-radius: 50%;
+
+			   background: blue;
+				/*
+					  背景：背景色，背景图片
+					  渐变：一个图片
+				*/
+			background-image: radial-gradient(
+					100px at 50px 60px,
+					rgba(0,0,0,0),
+					rgba(0,0,0,0.6)
+			);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="radial-gradient"></div>
+</body>
+</html>
