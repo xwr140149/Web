@@ -220,12 +220,16 @@
 		}
 
 		@keyframes rotate {
-			from {
-				transform: rotateX(0) rotateY(360deg) ;
+			0% {
+				transform: rotateX(-130deg) rotateY(-30deg) rotateZ(0deg);
 			}
 
-			to {
-				transform: rotateX(360deg) rotateY(0) ;
+			50% {
+				transform: rotateX(50deg) rotateY(150deg) rotateZ(180deg);
+			}
+
+			100%{
+				transform: rotateX(210deg) rotateY(330deg) rotateZ(360deg);
 			}
 		}
 	</style>
